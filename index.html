@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basavaraj Bastawadi — Portfolio</title>
+
+    <!-- Tailwind CDN (keeps the project as pure HTML/CSS) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                "ui-sans-serif",
+                "system-ui",
+                "-apple-system",
+                "Segoe UI",
+                "Roboto",
+                "Helvetica Neue",
+                "Arial",
+                "Noto Sans",
+                "sans-serif",
+              ],
+            },
+            animation: {
+              fade: "fade 0.5s ease-in-out",
+            },
+            keyframes: {
+              fade: {
+                "0%": { opacity: "1" },
+                "100%": { opacity: "0" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body class="bg-white text-black antialiased">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white">
+      <div class="text-center">
+        <div class="relative">
+          <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 p-1 animate-spin">
+            <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
+              <span class="text-4xl bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent font-bold">BB</span>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+          Loading Portfolio
+        </h2>
+        <div class="mt-8 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 rounded-full max-w-xs mx-auto"></div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300" id="site-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            BB
+          </div>
+
+          <nav class="hidden md:flex items-center space-x-8" id="desktop-nav">
+            <button class="nav-link" data-target="home">Home</button>
+            <button class="nav-link" data-target="about">About</button>
+            <button class="nav-link" data-target="skills">Skills</button>
+            <button class="nav-link" data-target="projects">Projects</button>
+            <button class="nav-link" data-target="education">Education</button>
+            <button class="nav-link" data-target="contact">Contact</button>
+            <button id="theme-toggle" class="p-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 transition-all">
+              <span id="theme-icon" class="w-5 h-5 inline-block"></span>
+            </button>
+          </nav>
+
+          <div class="md:hidden flex items-center gap-2">
+            <button id="theme-toggle-mobile" class="p-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20">
+              <span id="theme-icon-mobile" class="w-5 h-5 inline-block"></span>
+            </button>
+            <button id="menu-toggle" class="text-gray-300">
+              <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobile-nav" class="hidden md:hidden bg-white/95 backdrop-blur-lg border-t border-cyan-500/20">
+        <div class="px-4 pt-2 pb-4 space-y-2">
+          <button class="mobile-nav-link" data-target="home">Home</button>
+          <button class="mobile-nav-link" data-target="about">About</button>
+          <button class="mobile-nav-link" data-target="skills">Skills</button>
+          <button class="mobile-nav-link" data-target="projects">Projects</button>
+          <button class="mobile-nav-link" data-target="education">Education</button>
+          <button class="mobile-nav-link" data-target="contact">Contact</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen bg-white text-black overflow-x-hidden">
+      <!-- Hero -->
+      <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-100 to-white">
+          <div class="absolute inset-0 opacity-30" id="star-field"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-cyan-500/10 via-transparent to-purple-500/10"></div>
+        </div>
+
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/30 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute top-1/2 right-1/3 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div class="space-y-6">
+            <div class="inline-block">
+              <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 p-1">
+                <div class="w-full h-full rounded-full bg-black flex items-center justify-center text-6xl">
+                  <span class="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">BB</span>
+                </div>
+              </div>
+            </div>
+
+            <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold">
+              <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Basavaraj Bastawadi</span>
+            </h1>
+
+            <div class="h-16 flex items-center justify-center">
+              <p class="text-xl sm:text-2xl lg:text-3xl text-gray-300">
+                <span id="typed-text" class="font-semibold"></span><span class="animate-pulse">|</span>
+              </p>
+            </div>
+
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+              Computer Science Engineering Student crafting innovative solutions with code
+            </p>
+
+            <div class="flex flex-wrap gap-4 justify-center pt-8">
+              <button data-target="projects" class="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg overflow-hidden transition-all hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span class="relative z-10 font-semibold text-white">View Projects</span>
+              </button>
+
+              <a href="/" class="group relative px-8 py-4 border-2 border-cyan-500 rounded-lg overflow-hidden transition-all hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span class="relative z-10 font-semibold text-cyan-400 group-hover:text-white flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download Resume
+                </span>
+              </a>
+
+              <button data-target="contact" class="group relative px-8 py-4 border-2 border-purple-500 rounded-lg overflow-hidden transition-all hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span class="relative z-10 font-semibold text-purple-400 group-hover:text-white flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16v16H4z" />
+                    <path d="M22 6l-10 7L2 6" />
+                  </svg>
+                  Contact Me
+                </span>
+              </button>
+            </div>
+
+            <div class="flex gap-6 justify-center pt-8">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-gray-800/50 border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-500 transition-all hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.42c.6.11.82-.26.82-.58 0-.29-.01-1.05-.01-2.07-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.67 1.64.25 2.86.12 3.16.77.85 1.24 1.93 1.24 3.25 0 4.64-2.81 5.66-5.48 5.96.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full bg-gray-800/50 border border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-500 transition-all hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.25h5V24H0V8.25zm7.75 0h4.79v2.17h.07c.67-1.27 2.3-2.6 4.74-2.6 5.07 0 6.01 3.33 6.01 7.66V24h-5V15.7c0-2.03-.04-4.65-2.84-4.65-2.84 0-3.27 2.22-3.27 4.51V24h-5V8.25z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="relative py-20 bg-white overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16 opacity-0" data-animate>
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+              <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">About Me</span>
+            </h2>
+            <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full"></div>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 opacity-0" data-animate>
+              <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                <div class="relative bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-cyan-500/30">
+                  <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    I'm a passionate <span class="text-cyan-400 font-semibold">Computer Science Engineering student</span> and <span class="text-purple-400 font-semibold">Python Full Stack Developer</span> with a deep interest in creating innovative technological solutions.
+                  </p>
+                  <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    My expertise spans across <span class="text-blue-400">full-stack web development</span>, <span class="text-cyan-400">artificial intelligence</span>, and <span class="text-purple-400">machine learning</span>. I'm driven by the challenge of solving complex problems and building applications that make a real-world impact.
+                  </p>
+                  <p class="text-lg text-gray-300 leading-relaxed">
+                    With a strong foundation in both frontend and backend technologies, I continuously strive to learn and adapt to emerging technologies while maintaining a focus on clean, efficient, and scalable code.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 pt-4 opacity-0" data-animate>
+                <div class="flex-1 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-xl p-4 text-center">
+                  <p class="text-3xl font-bold text-cyan-400">4+</p>
+                  <p class="text-sm text-gray-400">Projects</p>
+                </div>
+                <div class="flex-1 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-4 text-center">
+                  <p class="text-3xl font-bold text-purple-400">9.0</p>
+                  <p class="text-sm text-gray-400">GPA</p>
+                </div>
+                <div class="flex-1 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl p-4 text-center">
+                  <p class="text-3xl font-bold text-blue-400">2026</p>
+                  <p class="text-sm text-gray-400">Graduation</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 opacity-0" data-animate>
+              <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity"></div>
+                <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                  <div class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7V3m0 0H8m8 0l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7l5-5m6 10h-4" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white mb-2">Full Stack Development</h3>
+                  <p class="text-sm text-gray-400">Expertise in building scalable web applications with modern technologies</p>
+                </div>
+              </div>
+
+              <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity"></div>
+                <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                  <div class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white mb-2">AI & Machine Learning</h3>
+                  <p class="text-sm text-gray-400">Passionate about creating intelligent solutions using ML algorithms</p>
+                </div>
+              </div>
+
+              <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity"></div>
+                <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                  <div class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white mb-2">Innovation Driven</h3>
+                  <p class="text-sm text-gray-400">Constantly exploring new technologies and pushing boundaries</p>
+                </div>
+              </div>
+
+              <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity"></div>
+                <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                  <div class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4v16h16V4H4zm2 2h12v4H6V6zm0 6h12v8H6v-8z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white mb-2">Academic Excellence</h3>
+                  <p class="text-sm text-gray-400">Maintaining 9.0 GPA while working on real-world projects</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="relative py-20 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16 opacity-0" data-animate>
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+              <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Technical Skills</span>
+            </h2>
+            <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full"></div>
+            <p class="mt-4 text-gray-400 text-lg">Technologies I work with</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                <div class="w-14 h-14 mb-4 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-6">Programming</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+                    <span class="text-sm">Python</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+                    <span class="text-sm">Java</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+                    <span class="text-sm">C</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+                    <span class="text-sm">SQL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                <div class="w-14 h-14 mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3.75H9.75a2.25 2.25 0 0 0-2.25 2.25v11.25A2.25 2.25 0 0 0 9.75 19.5h4.5A2.25 2.25 0 0 0 16.5 17.25V6a2.25 2.25 0 0 0-2.25-2.25z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-6">Frontend</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600"></div>
+                    <span class="text-sm">HTML/CSS</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600"></div>
+                    <span class="text-sm">JavaScript</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                <div class="w-14 h-14 mb-4 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2v4h4v-4c0-1.1-.9-2-2-2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 8v8a6 6 0 0 0 12 0V8" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-6">Backend</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-600"></div>
+                    <span class="text-sm">Flask</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-600"></div>
+                    <span class="text-sm">REST APIs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-cyan-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black p-6 rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                <div class="w-14 h-14 mb-4 rounded-xl bg-gradient-to-br from-pink-500 to-cyan-600 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 20h9" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-6">Database</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-cyan-600"></div>
+                    <span class="text-sm">MySQL</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-cyan-600"></div>
+                    <span class="text-sm">MongoDB</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-cyan-600"></div>
+                    <span class="text-sm">Firebase</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto opacity-0" data-animate>
+            <div class="bg-gray-800/50 border border-gray-700 hover:border-cyan-500/50 rounded-lg p-4 text-center hover:scale-105 transition-all">
+              <p class="text-sm text-gray-300">Git</p>
+            </div>
+            <div class="bg-gray-800/50 border border-gray-700 hover:border-cyan-500/50 rounded-lg p-4 text-center hover:scale-105 transition-all">
+              <p class="text-sm text-gray-300">VS Code</p>
+            </div>
+            <div class="bg-gray-800/50 border border-gray-700 hover:border-cyan-500/50 rounded-lg p-4 text-center hover:scale-105 transition-all">
+              <p class="text-sm text-gray-300">Figma</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="relative py-20 bg-white overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-0 right-1/3 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16 opacity-0" data-animate>
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+              <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Featured Projects</span>
+            </h2>
+            <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full"></div>
+            <p class="mt-4 text-gray-400 text-lg">Building solutions that make a difference</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-300"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 overflow-hidden transition-all duration-300">
+                <div class="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 opacity-20"></div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-cyan-400/50 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7H8m4 0v10" />
+                  </svg>
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">College Bus Management System</h3>
+                  <p class="text-gray-400 mb-4 leading-relaxed">A comprehensive web application for managing college bus routes, schedules, and student transportation efficiently.</p>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Python</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Flask</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">MySQL</span>
+                  </div>
+                  <div class="flex gap-4">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-cyan-500/50 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.42c.6.11.82-.26.82-.58 0-.29-.01-1.05-.01-2.07-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.67 1.64.25 2.86.12 3.16.77.85 1.24 1.93 1.24 3.25 0 4.64-2.81 5.66-5.48 5.96.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      <span class="text-sm text-gray-400">GitHub</span>
+                    </a>
+                    <a href="#" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7v7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12v7a2 2 0 0 0 2 2h7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l11-11" />
+                      </svg>
+                      <span class="text-sm text-white">Live Demo</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-300"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 overflow-hidden transition-all duration-300">
+                <div class="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 opacity-20"></div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-cyan-400/50 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8" />
+                  </svg>
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Laptop Price Prediction</h3>
+                  <p class="text-gray-400 mb-4 leading-relaxed">Machine learning model using regression algorithms to predict laptop prices based on specifications. Achieved 92% accuracy using Random Forest.</p>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Python</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Scikit-learn</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Pandas</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Flask</span>
+                  </div>
+                  <div class="flex gap-4">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-cyan-500/50 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.42c.6.11.82-.26.82-.58 0-.29-.01-1.05-.01-2.07-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.67 1.64.25 2.86.12 3.16.77.85 1.24 1.93 1.24 3.25 0 4.64-2.81 5.66-5.48 5.96.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      <span class="text-sm text-gray-400">GitHub</span>
+                    </a>
+                    <a href="#" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7v7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12v7a2 2 0 0 0 2 2h7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l11-11" />
+                      </svg>
+                      <span class="text-sm text-white">Live Demo</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-300"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 overflow-hidden transition-all duration-300">
+                <div class="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 opacity-20"></div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-cyan-400/50 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7l-4 4-4-4" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v6" />
+                  </svg>
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Plant Identification using Leaf Image</h3>
+                  <p class="text-gray-400 mb-4 leading-relaxed">Deep learning application using CNN to identify plant species from leaf images. Trained on 10,000+ images with 95% accuracy.</p>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Python</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">TensorFlow</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">OpenCV</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">React</span>
+                  </div>
+                  <div class="flex gap-4">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-cyan-500/50 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.42c.6.11.82-.26.82-.58 0-.29-.01-1.05-.01-2.07-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.67 1.64.25 2.86.12 3.16.77.85 1.24 1.93 1.24 3.25 0 4.64-2.81 5.66-5.48 5.96.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      <span class="text-sm text-gray-400">GitHub</span>
+                    </a>
+                    <a href="#" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7v7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12v7a2 2 0 0 0 2 2h7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l11-11" />
+                      </svg>
+                      <span class="text-sm text-white">Live Demo</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-cyan-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-300"></div>
+              <div class="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 overflow-hidden transition-all duration-300">
+                <div class="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-pink-500 to-cyan-600 opacity-20"></div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-cyan-400/50 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
+                  </svg>
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Smart Campus Connect</h3>
+                  <p class="text-gray-400 mb-4 leading-relaxed">An integrated platform connecting students, faculty, and administration with features like attendance tracking, announcements, and resource sharing.</p>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">React</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Express</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">MySQL</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Socket.io</span>
+                  </div>
+                  <div class="flex gap-4">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-cyan-500/50 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.42c.6.11.82-.26.82-.58 0-.29-.01-1.05-.01-2.07-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.67 1.64.25 2.86.12 3.16.77.85 1.24 1.93 1.24 3.25 0 4.64-2.81 5.66-5.48 5.96.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+                      <span class="text-sm text-gray-400">GitHub</span>
+                    </a>
+                    <a href="#" class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-lg transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7v7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12v7a2 2 0 0 0 2 2h7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l11-11" />
+                      </svg>
+                      <span class="text-sm text-white">Live Demo</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="relative py-20 bg-gradient-to-b from-gray-100 to-white overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16 opacity-0" data-animate>
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+              <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Education</span>
+            </h2>
+            <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full"></div>
+          </div>
+
+          <div class="max-w-4xl mx-auto">
+            <div class="relative opacity-0" data-animate>
+              <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-600"></div>
+
+              <div class="relative pl-20 pb-12">
+                <div class="absolute left-0 top-0 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center border-4 border-black">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0 1 12 21.5 12.083 12.083 0 0 1 5.84 10.578L12 14z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
+                  </svg>
+                </div>
+
+                <div class="group relative">
+                  <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                  <div class="relative bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-gray-800 group-hover:border-cyan-500/50 transition-all">
+                    <div class="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Bachelor of Engineering in Computer Science</h3>
+                        <p class="text-lg text-cyan-400 mb-2">Computer Science Engineering</p>
+                        <p class="text-gray-400">2022 - 2026</p>
+                      </div>
+                      <div class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.49 4.569a1 1 0 0 0 .95.69h4.812c.969 0 1.371 1.24.588 1.81l-3.897 2.833a1 1 0 0 0-.364 1.118l1.49 4.569c.3.921-.755 1.688-1.538 1.118l-3.897-2.833a1 1 0 0 0-1.176 0l-3.897 2.833c-.783.57-1.838-.197-1.538-1.118l1.49-4.569a1 1 0 0 0-.364-1.118L2.34 9.996c-.783-.57-.38-1.81.588-1.81h4.812a1 1 0 0 0 .95-.69l1.49-4.57z" />
+                        </svg>
+                        <span class="text-2xl font-bold text-white">9.0</span>
+                        <span class="text-sm text-gray-400">GPA</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2v4h4v-4c0-1.1-.9-2-2-2z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 8v8a6 6 0 0 0 12 0V8" />
+                        </svg>
+                        Key Subjects
+                      </h4>
+                      <div class="grid sm:grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Data Structures & Algorithms</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Database Management Systems</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Artificial Intelligence</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Machine Learning</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Web Technologies</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Operating Systems</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Computer Networks</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-300">
+                          <div class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
+                          <span>Software Engineering</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 mt-12 max-w-2xl mx-auto opacity-0" data-animate>
+              <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-xl p-6 text-center">
+                <div class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">A+</div>
+                <p class="text-gray-400">Overall Grade</p>
+              </div>
+              <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-6 text-center">
+                <div class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-2">Top 5%</div>
+                <p class="text-gray-400">Class Rank</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="relative py-20 bg-white overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-1/4 right-1/3 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16 opacity-0" data-animate>
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+              <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Get In Touch</span>
+            </h2>
+            <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full"></div>
+            <p class="mt-4 text-gray-400 text-lg">Let's discuss your next project</p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12">
+            <div class="space-y-8 opacity-0" data-animate>
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-6">Contact Information</h3>
+                <div class="space-y-4">
+                  <a href="mailto:basavaraj.bastawadi@example.com" class="group flex items-center gap-4 p-4 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8-4H8m2 8H8" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-400">Email</p>
+                      <p class="text-white group-hover:text-cyan-400 transition-colors">basavaraj.bastawadi@example.com</p>
+                    </div>
+                  </a>
+
+                  <a href="tel:+91XXXXXXXXXX" class="group flex items-center gap-4 p-4 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l1 5a9 9 0 0 0 9 9l5-1v-2a2 2 0 0 0-2-2h-1a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-400">Phone</p>
+                      <p class="text-white group-hover:text-cyan-400 transition-colors">+91 XXXXX XXXXX</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="group flex items-center gap-4 p-4 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c-1.1 0-2 .9-2 2 0 2.21 2 6 2 6s2-3.79 2-6c0-1.1-.9-2-2-2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11V6a4 4 0 0 1 4-4h1a4 4 0 0 1 4 4v5" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-400">Location</p>
+                      <p class="text-white group-hover:text-cyan-400 transition-colors">Karnataka, India</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="opacity-0" data-animate>
+                <h3 class="text-2xl font-bold text-white mb-6">Follow Me</h3>
+                <div class="flex gap-4">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-cyan-500/50 flex items-center justify-center transition-all hover:scale-110 text-gray-400 hover:text-cyan-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.42c.6.11.82-.26.82-.58 0-.29-.01-1.05-.01-2.07-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6 0c2.28-1.56 3.29-1.24 3.29-1.24.67 1.64.25 2.86.12 3.16.77.85 1.24 1.93 1.24 3.25 0 4.64-2.81 5.66-5.48 5.96.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-blue-500/50 flex items-center justify-center transition-all hover:scale-110 text-gray-400 hover:text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.25h5V24H0V8.25zm7.75 0h4.79v2.17h.07c.67-1.27 2.3-2.6 4.74-2.6 5.07 0 6.01 3.33 6.01 7.66V24h-5V15.7c0-2.03-.04-4.65-2.84-4.65-2.84 0-3.27 2.22-3.27 4.51V24h-5V8.25z" />
+                    </svg>
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-purple-500/50 flex items-center justify-center transition-all hover:scale-110 text-gray-400 hover:text-purple-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.608 1.794-1.574 2.163-2.724-.95.564-2.005.974-3.127 1.195-.896-.959-2.173-1.557-3.591-1.557-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124-4.087-.205-7.713-2.164-10.141-5.144-.423.724-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099-.807-.026-1.566-.248-2.228-.616v.06c0 2.385 1.693 4.374 3.946 4.827-.413.11-.848.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.6 3.418-1.68 1.319-3.8 2.105-6.102 2.105-.395 0-.779-.023-1.17-.067 2.179 1.397 4.768 2.212 7.557 2.212 9.054 0 14.001-7.496 14.001-13.986 0-.21 0-.423-.015-.634.962-.694 1.8-1.56 2.46-2.548l-.047-.02z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="relative p-6 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 overflow-hidden opacity-0" data-animate>
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10"></div>
+                <div class="relative">
+                  <h3 class="text-xl font-bold text-white mb-3">Let's work together!</h3>
+                  <p class="text-gray-400">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative opacity-0" data-animate>
+              <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-xl opacity-20"></div>
+              <form id="contact-form" class="relative bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-gray-800 space-y-6">
+                <div>
+                  <label for="name" class="block text-sm text-gray-400 mb-2">Your Name</label>
+                  <input id="name" name="name" required class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 focus:border-cyan-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all" placeholder="John Doe" />
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm text-gray-400 mb-2">Your Email</label>
+                  <input id="email" name="email" type="email" required class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 focus:border-cyan-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all" placeholder="john@example.com" />
+                </div>
+
+                <div>
+                  <label for="subject" class="block text-sm text-gray-400 mb-2">Subject</label>
+                  <input id="subject" name="subject" required class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 focus:border-cyan-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all" placeholder="Project Inquiry" />
+                </div>
+
+                <div>
+                  <label for="message" class="block text-sm text-gray-400 mb-2">Message</label>
+                  <textarea id="message" name="message" required rows="5" class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 focus:border-cyan-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all resize-none" placeholder="Tell me about your project..."></textarea>
+                </div>
+
+                <button type="submit" class="group w-full relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg overflow-hidden transition-all hover:scale-105">
+                  <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span class="relative z-10 font-semibold text-white flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Send Message
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="relative bg-gradient-to-b from-white to-gray-100 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-gray-400 opacity-0" data-animate>
+              <span>© 2026 Basavaraj Bastawadi. All rights reserved.</span>
+            </div>
+            <div class="flex items-center gap-2 text-gray-400 opacity-0" data-animate>
+              <span>Made with</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-500 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 9.24 3 10.91 3.81 12 5.08 13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+              <span>using HTML & Tailwind CSS</span>
+            </div>
+            <div class="flex gap-6 opacity-0" data-animate>
+              <button class="text-gray-400 hover:text-cyan-400 transition-colors">Privacy</button>
+              <button class="text-gray-400 hover:text-cyan-400 transition-colors">Terms</button>
+              <button class="text-gray-400 hover:text-cyan-400 transition-colors">Contact</button>
+            </div>
+          </div>
+          <div class="mt-6 h-0.5 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
